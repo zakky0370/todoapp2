@@ -9,10 +9,9 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- * アイコンのために追加
- *= require material_icons
- *= require_self
+ 
  *= require_tree .
+ *= require_self
  */
 /* Materialize */
 @import "materialize/components/color-variables";
@@ -20,3 +19,5 @@ $primary-color: color("teal", "accent-3") !default;
 $secondary-color: color("cyan", "base") !default;
 @import 'materialize';
 @import 'material_icons';
+
+body { background-color: #FFA; }

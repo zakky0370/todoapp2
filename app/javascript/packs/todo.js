@@ -11,11 +11,9 @@ import Header from './components/header.vue'
 var app = new Vue({
   el: '#app',
   components: {
-  'navbar': Header,
-}
+    'navbar': Header,
+    }
 });
-
-
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would
