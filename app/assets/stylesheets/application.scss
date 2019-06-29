@@ -14,10 +14,10 @@
  *= require_self
  */
 /* Materialize */
-@import "materialize/components/color-variables";
-$primary-color: color("teal", "accent-3") !default;
+@import "materialize/components/color-variables"; /* カラースキームはここを参照https://materializecss.com/color.html */
+$primary-color: color("pink", "accent-4") !default;
 $secondary-color: color("cyan", "base") !default;
 @import 'materialize';
 @import 'material_icons';
 
-body { background-color: #FFA; }
+body { background-color: rgb(181, 221, 233); }
