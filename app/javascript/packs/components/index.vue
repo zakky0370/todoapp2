@@ -14,30 +14,10 @@
     <!-- リスト表示部分 -->
     <div>
       <ul class="collection">
-        <!-- 
-          <li id="row_task_1" class="collection-item">
-          <label for="task_1">
-          <input type="checkbox" id="task_1" />
-            <span>Sample Task</span>
-            </label>
-        </li>
-        <li id="row_task_2" class="collection-item">
-          <label for="task_2">
-          <input type="checkbox" id="task_2" />
-            <span>Sample Task</span>
-            </label>
-        </li>
-        <li id="row_task_3" class="collection-item">
-          <label for="task_3">
-          <input type="checkbox" id="task_3" />
-            <span>Sample Task</span>
-            </label>
-        </li> 
-        -->
-        <li v-for="task in tasks" v-if="!task.is_done" v-bind:key="'row_task_' + task.id" class="collection-item"> 
-          <label v-bind:for="'task_' + task.id">
-          <input type="checkbox" v-on:change="doneTask(task.id)" v-bind:id="'task_' + task.id" />
-          <span>{{ task.name }}</span></label>
+        <li v-for="task in tasks"  v-bind:key="'row_task_' + task.id" v-bind:id="'row_task_' + task.id" class="collection-item"> 
+          <label  v-if="!task.is_done">
+          <input type="checkbox" v-on:click="doneTask(task.id)" />
+          <span v-bind:for="'task_' + task.id" class="word-color-black">{{ task.name }}</span></label>
         </li>
       </ul>
     </div>
@@ -46,22 +26,10 @@
     <!-- 完了済みタスク一覧 -->
     <div id="finished-tasks" class="display_none">
       <ul class="collection">
-        <!--
-        <li id="row_task_4" class="collection-item">
-          <label v-bind:for="task_4" class="line-through">
-          <input type="checkbox" id="'task_4" checked="checked" />
-            <span>Done Task</span></label>
-        </li>
-        <li id="row_task_5" class="collection-item">
-          <label v-bind:for="task_5" class="line-through">
-          <input type="checkbox" id="'task_5" checked="checked" />
-            <span>Done Task</span></label>
-        </li>
-        -->
-        <li v-for="task in tasks" v-if="task.is_done" v-bind:key="'row_task_' + task.id" class="collection-item">
-          <label v-bind:for="'task_' + task.id"  class="line-through">
-          <input type="checkbox" v-bind:id="'task_' + task.id" checked="checked" />
-          <span>{{ task.name }}</span></label>
+        <li v-for="task in tasks" v-bind:key="'row_task_' + task.id" v-bind:id="'row_task_' + task.id" class="collection-item">
+          <label v-if="task.is_done">
+          <input type="checkbox" checked="checked" />
+          <span v-bind:for="'task_' + task.id"  class="line-through">{{ task.name }}</span></label>
         </li>
       </ul>
     </div>
@@ -117,8 +85,8 @@
         el.classList.add('display_none');
         // もろもろスタイルなどをたして完了済みに追加
         el_clone.getElementsByTagName('input')[0].checked = 'checked';
-        el_clone.getElementsByTagName('label')[0].classList.add('line-through');
-        el_clone.getElementsByTagName('label')[0].classList.remove('word-color-black');
+        el_clone.getElementsByTagName('span')[0].classList.add('line-through');
+        el_clone.getElementsByTagName('span')[0].classList.remove('word-color-black');
         var li = document.querySelector('#finished-tasks > ul > li:first-child');
         document.querySelector('#finished-tasks > ul').insertBefore(el_clone, li);
       }
@@ -133,7 +101,6 @@
   .display_none {
     display:none;
   }
-  
   .line-through {
     text-decoration: line-through;
   }
