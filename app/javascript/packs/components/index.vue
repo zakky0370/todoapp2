@@ -14,8 +14,8 @@
     <!-- リスト表示部分 -->
     <div>
       <ul class="collection">
-        <li v-for="task in tasks"  v-bind:key="'row_task_' + task.id" v-bind:id="'row_task_' + task.id" class="collection-item"> 
-          <label  v-if="!task.is_done">
+        <li v-for="task in tasks"  v-bind:key="'row_task_' + task.id" v-bind:id="'row_task_' + task.id" class="collection-item"  v-if="!task.is_done"> 
+          <label>
           <input type="checkbox" v-on:click="doneTask(task.id)" />
           <span v-bind:for="'task_' + task.id" class="word-color-black">{{ task.name }}</span></label>
         </li>
@@ -26,8 +26,8 @@
     <!-- 完了済みタスク一覧 -->
     <div id="finished-tasks" class="display_none">
       <ul class="collection">
-        <li v-for="task in tasks" v-bind:key="'row_task_' + task.id" v-bind:id="'row_task_' + task.id" class="collection-item">
-          <label v-if="task.is_done">
+        <li v-for="task in tasks" v-bind:key="'row_task_' + task.id" v-bind:id="'row_task_' + task.id" class="collection-item" v-if="task.is_done">
+          <label>
           <input type="checkbox" checked="checked" />
           <span v-bind:for="'task_' + task.id"  class="line-through">{{ task.name }}</span></label>
         </li>

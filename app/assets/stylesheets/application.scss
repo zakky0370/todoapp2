@@ -15,9 +15,9 @@
  */
 /* Materialize */
 @import "materialize/components/color-variables"; /* カラースキームはここを参照https://materializecss.com/color.html */
-$primary-color: color("pink", "accent-4") !default;
-$secondary-color: color("cyan", "base") !default;
+$primary-color: color("cyan", "darken-2") !default;
+/* $secondary-color: color("light-blue", "accent-1") !default;*/
 @import 'materialize';
 @import 'material_icons';
 
-body { background-color: rgb(181, 221, 233); }
+body { background-color: rgba($color: #ffee58, $alpha: 1.0) }
